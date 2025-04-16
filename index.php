@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autozy</title>
+</head>
+<body>
+    <header>
+        <h1>Autozy</h1>
+        <nav>
+            <a href="index.php">Начало</a>
+            <a href="">Добави обява</a>
+            <a href="">Търсене</a>
+            <a href="">Моите обяви</a>
+            <?php
+        // Проверяваме дали потребителят е логнат
+        if (isset($_SESSION['user_id'])) {
+            // Ако е логнат, показваме линк за излизане
+            echo '<a href="logout.php">Изход</a>';
+        } else {
+            // Ако не е логнат, показваме линкове за регистрация и вход
+            echo '<a href="login.php">Влизане</a>';
+            echo '<a href="register.php">Регистрация</a>';
+        }
+        ?>
+        </nav>
+    </header>
+</body>
+</html>
+
+<?php
+include('db.php');
+
+// Извличане на всички коли
+$query = "SELECT c.car_id, b.brand_name, m.model_name, c.year, c.price, c.milage, e.engine_code, t.transsmition_type, f.fuel_type_name
+          FROM Cars c
+          JOIN Brands b ON c.brand_id = b.brand_id
+          JOIN Models m ON c.model_id = m.model_id
+          JOIN Engines e ON c.engine_id = e.engine_id
+          JOIN Transmissions t ON c.transmition_id = t.transmission_id
+          JOIN FuelTypes f ON c.fuel_type_id = f.fuel_type_id";
+$result = mysqli_query($connection, $query);
+
+// Проверка дали има резултати
+if (mysqli_num_rows($result) > 0) {
+    echo '<h2>Обяви</h2>';
+    echo '<div class="car-listings">';
+
+    // Извеждаме всяка кола
+    while ($car = mysqli_fetch_assoc($result)) {
+        echo '<div class="car-card">';
+        echo '<h3>' . htmlspecialchars($car['brand_name']) . ' ' . htmlspecialchars($car['model_name']) . '</h3>';
+        echo '<p><strong>Година:</strong> ' . $car['year'] . '</p>';
+        echo '<p><strong>Цена:</strong> ' . number_format($car['price'], 2) . ' лв</p>';
+        echo '<p><strong>Пробег:</strong> ' . $car['milage'] . ' км</p>';
+        echo '<p><strong>Двигател:</strong> ' . htmlspecialchars($car['engine_code']) . '</p>';
+        echo '<p><strong>Скоростна кутия:</strong> ' . htmlspecialchars($car['transsmition_type']) . '</p>';
+        echo '<p><strong>Тип гориво:</strong> ' . htmlspecialchars($car['fuel_type_name']) . '</p>';
+        echo '</div>';
+    }
+
+    echo '</div>';
+} else {
+    echo '<p>Няма налични обяви.</p>';
+}
+
+mysqli_close($connection);
+?>

@@ -1,0 +1,310 @@
+/* Header Styling */
+header {
+    background-color: #025539;
+    color: white;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 6rem;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Nav Styling */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 15pt;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+
+
+
+
+
+
+/* Основен контейнер за обявите */
+.car-listings {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* За да изглеждат добре на всякакви размери на екрана */
+    gap: 20px; /* Разстояние между обявите */
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px; /* Максимална ширина на контейнера */
+}
+
+/* Индивидуална карта за кола */
+.car-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* При ховърване на карта на кола (ефект за взаимодействие с потребителя) */
+.car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Заглавие на картата с кола */
+.car-card h3 {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Стилове за абзаци */
+.car-card p {
+    font-size: 1em;
+    margin: 5px 0;
+    color: #555;
+}
+
+/* Подчертаване на важните данни (например цена и година) */
+.car-card strong {
+    color: #333;
+    font-weight: bold;
+}
+
+/* Стилове за цената */
+.car-card .price {
+    color: #27ae60;
+    font-size: 1.2em;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* Стил за изображение на колата (ако решите да добавите изображения) */
+.car-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* Стилове за мобилни устройства (за по-добро изглеждане на телефони и таблети) */
+@media (max-width: 768px) {
+    .car-listings {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .car-listings {
+        grid-template-columns: 1fr; /* Една колона за малки екрани */
+    }
+}
+
+
+
+.register-page-container{
+    display: flex;
+    flex-direction: column;   
+    justify-content: flex-start;  /* Поставяме формата в горната част */
+    align-items: center;         /* Центрираме по хоризонтала */
+    padding-top: 20px; 
+}
+.register-page .form-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Заглавие на формата */
+.register-page h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: #025539;
+}
+
+/* Стилове за формата */
+.register-page form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-page label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.register-page input {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.register-page input:focus {
+    border-color: #333;
+    outline: none;
+}
+
+.register-page button {
+    padding: 12px;
+    background-color: #025539;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-page button:hover {
+    background-color: #555;
+}
+
+.register-page button:active {
+    background-color: #777;
+}
+
+/* За мобилни устройства */
+@media (max-width: 600px) {
+    .register-page .form-container {
+        padding: 20px;
+    }
+
+    .register-page h2 {
+        font-size: 1.5rem;
+    }
+
+    .register-page input {
+        padding: 10px;
+    }
+
+    .register-page button {
+        padding: 10px;
+    }
+}
+
+
+
+
+/* Общ стил за страницата */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Стил за контейнера на формата за вход */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Стил за заглавието на формата */
+.login-container h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #025539;
+    margin-bottom: 20px;
+}
+
+/* Стил за етикетите на полетата */
+.login-container label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Стил за текстовите полета за въвеждане */
+.login-container input{
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Стил за бутона за вход */
+.login-container button{
+    background-color: #025539;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: #555;
+}
+
+/* Стил за съобщения за грешка */
+.login-container .error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Стил за линкове (например за връзка към регистрация) */
+.login-container a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #4CAF50;
+    font-size: 16px;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+/* Стил за адаптивност */
+@media (max-width: 768px) {
+    .login-container {
+        width: 90%;
+    }
+}
