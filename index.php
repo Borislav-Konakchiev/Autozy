@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+session_start(); // Започваме сесията
+?>
+
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css">
@@ -7,32 +11,12 @@
     <title>Autozy</title>
 </head>
 <body>
-    <header>
-        <h1>Autozy</h1>
-        <nav>
-            <a href="index.php">Начало</a>
-            <a href="">Добави обява</a>
-            <a href="">Търсене</a>
-            <a href="">Моите обяви</a>
-            <?php
-        // Проверяваме дали потребителят е логнат
-        if (isset($_SESSION['user_id'])) {
-            // Ако е логнат, показваме линк за излизане
-            echo '<a href="logout.php">Изход</a>';
-        } else {
-            // Ако не е логнат, показваме линкове за регистрация и вход
-            echo '<a href="login.php">Влизане</a>';
-            echo '<a href="register.php">Регистрация</a>';
-        }
-        ?>
-        </nav>
-    </header>
+   <?php include('header.php'); ?>
 </body>
 </html>
 
 <?php
 include('db.php');
-
 // Извличане на всички коли
 $query = "SELECT c.car_id, b.brand_name, m.model_name, c.year, c.price, c.milage, e.engine_code, t.transsmition_type, f.fuel_type_name
           FROM Cars c
@@ -45,7 +29,6 @@ $result = mysqli_query($connection, $query);
 
 // Проверка дали има резултати
 if (mysqli_num_rows($result) > 0) {
-    echo '<h2>Обяви</h2>';
     echo '<div class="car-listings">';
 
     // Извеждаме всяка кола

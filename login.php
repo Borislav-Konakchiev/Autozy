@@ -48,17 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Autozy</h1>
-        <nav>
-            <a href="index.php">Начало</a>
-            <a href="">Добави обява</a>
-            <a href="">Търсене</a>
-            <a href="">Моите обяви</a>
-            <a href="login.php">Влизане</a>
-            <a href="register.php">Регистрация</a>
-        </nav>
-    </header>
+
+    <?php include('header.php'); ?>
 
     <div class="login-container">
         <form action="login.php" method="POST">
