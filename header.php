@@ -10,7 +10,7 @@
         <h1>Autozy</h1>
         <nav>
             <a href="index.php">Начало</a>
-            <a href="">Добави обява</a>
+            <a href="add_listing.php">Добави обява</a>
             <a href="">Търсене</a>
             <?php if (isset($_SESSION['user_id'])): ?>
             <!-- Ако потребителят е логнат, показваме линк за изход -->

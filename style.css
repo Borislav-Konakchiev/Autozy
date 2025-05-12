@@ -332,3 +332,89 @@ body {
     color: #c62828;
     background-color: #ffcdd2;
 }
+
+
+
+
+/* === Стилизация за страницата "Добави обява" === */
+.listing-page .form-container {
+    background-color: #fff;
+    padding: 30px;
+    margin: 30px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 600px;
+}
+
+.listing-page h2 {
+    text-align: center;
+    color: #025539;
+    margin-bottom: 25px;
+    font-size: 2rem;
+}
+
+.listing-page form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.listing-page label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #444;
+}
+
+.listing-page input,
+.listing-page select,
+.listing-page button {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+}
+
+.listing-page input:focus,
+.listing-page select:focus {
+    border-color: #025539;
+    outline: none;
+}
+
+.listing-page input[type="file"] {
+    background-color: #fff;
+}
+
+.listing-page button {
+    background-color: #025539;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.listing-page button:hover {
+    background-color: #02724e;
+}
+
+.listing-page .success-message {
+    background-color: #c8e6c9;
+    color: #2e7d32;
+    padding: 15px;
+    text-align: center;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.listing-page input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+@media (max-width: 600px) {
+    .listing-page .form-container {
+        padding: 20px;
+    }
+}

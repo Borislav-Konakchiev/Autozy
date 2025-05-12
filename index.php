@@ -18,10 +18,9 @@ session_start(); // Започваме сесията
 <?php
 include('db.php');
 // Извличане на всички коли
-$query = "SELECT c.car_id, b.brand_name, m.model_name, c.year, c.price, c.milage, e.engine_code, t.transsmition_type, f.fuel_type_name
+$query = "SELECT c.car_id, b.brand_name, c.model, c.year, c.price, c.milage, e.engine_code, t.transsmition_type, f.fuel_type_name
           FROM Cars c
           JOIN Brands b ON c.brand_id = b.brand_id
-          JOIN Models m ON c.model_id = m.model_id
           JOIN Engines e ON c.engine_id = e.engine_id
           JOIN Transmissions t ON c.transmition_id = t.transmission_id
           JOIN FuelTypes f ON c.fuel_type_id = f.fuel_type_id";
@@ -34,7 +33,7 @@ if (mysqli_num_rows($result) > 0) {
     // Извеждаме всяка кола
     while ($car = mysqli_fetch_assoc($result)) {
         echo '<div class="car-card">';
-        echo '<h3>' . htmlspecialchars($car['brand_name']) . ' ' . htmlspecialchars($car['model_name']) . '</h3>';
+        echo '<h3>' . htmlspecialchars($car['brand_name']) . ' ' . htmlspecialchars($car['model']) . '</h3>';
         echo '<p><strong>Година:</strong> ' . $car['year'] . '</p>';
         echo '<p><strong>Цена:</strong> ' . number_format($car['price'], 2) . ' лв</p>';
         echo '<p><strong>Пробег:</strong> ' . $car['milage'] . ' км</p>';
