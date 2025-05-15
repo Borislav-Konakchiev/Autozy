@@ -11,14 +11,14 @@
         <nav>
             <a href="index.php">Начало</a>
             <a href="add_listing.php">Добави обява</a>
-            <a href="">Търсене</a>
+            <a href="search.php">Търсене</a>
             <?php if (isset($_SESSION['user_id'])): ?>
             <!-- Ако потребителят е логнат, показваме линк за изход -->
             <a href="">Моите обяви</a>
             <a href="logout.php">Изход</a>
         <?php else: ?>
-            <!-- Ако потребителят не е логнат, показваме линк за влизане -->
-            <a href="login.php">Влизане</a>
+            <!-- Ако потребителят не е логнат, показваме линк за вход -->
+            <a href="login.php">Вход</a>
             <a href="register.php">Регистрация</a>
         <?php endif; ?>
 

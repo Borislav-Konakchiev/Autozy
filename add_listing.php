@@ -15,6 +15,7 @@ $brand_query = mysqli_query($connection, "SELECT * FROM brands");
 //Зареждаме горивата и екстрите от базата
 $fuel_query = mysqli_query($connection, "SELECT * FROM fueltypes");
 $feature_query = mysqli_query($connection, "SELECT * FROM features");
+$trans_query = mysqli_query($connection, "SELECT * FROM transmissions");
 
 $message = null;
 
@@ -25,19 +26,20 @@ if (isset($_POST['submit'])) {
     $price = $_POST['price'];
     $mileage = $_POST['mileage'];
     $fuel_type = $_POST['fuel_type'];
+    $transmission_id = $_POST['transmission_id'];
     $user_id = $_SESSION['user_id'];
     $features = isset($_POST['features']) ? $_POST['features'] : [];
 
     // Вмъкваме обявата
-    $stmt = mysqli_prepare($connection, "INSERT INTO cars (user_id, brand_id, model, year, price, mileage, fuel_type_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    mysqli_stmt_bind_param($stmt, "iissiii", $user_id, $brand_id, $model, $year, $price, $mileage, $fuel_type);
+    $stmt = mysqli_prepare($connection, "INSERT INTO cars (user_id, brand_id, model, year, price, mileage, fuel_type_id, transmission_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    mysqli_stmt_bind_param($stmt, "iissiiii", $user_id, $brand_id, $model, $year, $price, $mileage, $fuel_type, $transmission_id);
     mysqli_stmt_execute($stmt);
     $car_id = mysqli_insert_id($connection);
 
     // Вмъкваме екстрите
     foreach ($features as $feature_id) {
         $feature_id = intval($feature_id);
-        mysqli_query($connection, "INSERT INTO car_features (car_id, feature_id) VALUES ($car_id, $feature_id)");
+        mysqli_query($connection, "INSERT INTO car_feature (car_id, feature_id) VALUES ($car_id, $feature_id)");
     }
 
     // Качваме снимките в директория images/ и записваме в базата
@@ -107,6 +109,13 @@ if (isset($_POST['submit'])) {
                 <option value="<?php echo $row['fuel_type_id']; ?>"><?php echo $row['fuel_type_name']; ?></option>
             <?php endwhile; ?>
         </select>
+         <label>Скоростна кутия:</label>
+        <select name="transmission_id" required>
+            <?php while ($row = mysqli_fetch_assoc($trans_query)): ?>
+                 <option value="<?php echo $row['transmission_id']; ?>"><?php echo $row['transmission_type']; ?></option>
+            <?php endwhile; ?>
+        </select>
+
 
         <label>Екстри:</label>
         <?php while ($row = mysqli_fetch_assoc($feature_query)): ?>

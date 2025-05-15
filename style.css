@@ -418,3 +418,71 @@ body {
         padding: 20px;
     }
 }
+
+
+
+/* Центрирана форма за търсене */
+
+.search-page .form-container {
+    background-color: #fff;
+    padding: 30px 40px;
+    margin: 30px auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    text-align: center;
+}
+
+.search-page h2 {
+    color: #025539;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.search-page form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-page label {
+    font-weight: 500;
+    color: #333;
+}
+
+.search-page input,
+.search-page select {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+}
+
+.search-page input:focus,
+.search-page select:focus {
+    border-color: #025539;
+    outline: none;
+}
+
+.search-page button {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 400px;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #025539;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-page button:hover {
+    background-color: #013e2b;
+}
